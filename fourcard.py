@@ -9,29 +9,35 @@ print ('Hello World')
 class Card:
     SUITS = ('Clubs','Diamonds','Hearts','Spades')
     RANKS = ('nope','Ace','2','3', '4', '5', '6', '7','8', '9', '10', 'Jack', 'Queen', 'King')
-
-    def __init__(self, suit=0, rank=0):
+    def __repr__ (self):
+        return self.__str__
+    def __init__(self, suit, rank):
         self.suit = suit
         self.rank = rank
 
     def printcards(self):
         print( "{} of {}".format(self.rank,self.suit)    )
-card = Card("Clubs","Ace")
-card.printcards()
+#card = Card("Clubs","Ace")
+#card.printcards()
 class Deck:
-    def __init__(self, suit, rank):
+    def __init__(self):
         self.cards = []
         self.build()
- 
+    def __repr__ (self):
+        return self.__str__
     def build (self):
         for s in  ['Clubs','Diamonds','Hearts','Spades']:
             for r in ['Ace','2','3', '4', '5', '6', '7','8', '9', '10', 'Jack', 'Queen', 'King']:
+               # print (Card(s,r))
                 self.cards.append (Card(s,r))
+            
     
     def showcards (self):
         for c in self.cards:
-                print (self)
-    
+            c.printcards(self)
+deck = Deck()
+#deck.showcards()
+
 class Player (object):
 
     def __init__( self):
