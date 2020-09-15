@@ -56,33 +56,51 @@ deck.shuffle()
 deck.shuffle()
 deck.showcards()
 
+class Dealer:
+    def __init__(self):
+        self.cards = []
+
+    def build(self,card):
+          self.cards.append (card)
+
+dealercard = Dealer()
 print('Start of Dealers Hand')
 print("")
 for i in range (6):
     card = deck.dealcard()
+    dealercard.build(card)
     card.printcards()
-
-print('Start of Player 1s Hand')
-print("")
-for i in range (5):
-    card = deck.dealcard()
-    card.printcards()
-
-
-
     
 
-class Player (object):
+class Player ():
 
     def __init__( self):
-        self._cards = []
-        self._chips = 100
-        self._bet = 0
+        self.cards = []
+        self.chips = 100
+        self.bet = 0
 
     def clearHand (self):
-        self._cards = []
+        self.cards = []
 
-    def dealCard (self, card):
-        self._cards.append(card)
+    def build(self,card):
+          self.cards.append (card)
+print("")
+print('Start of Player 1s Hand')
+print("")
+
+p1 = Player()
+for i in range (5):
+    card = deck.dealcard()
+    p1.build(card)
+    card.printcards()
+print("")
+print('Start of Player 2s Hand')
+print("")
+p2 = Player()
+for i in range (5):
+    card = deck.dealcard()
+    p2.build(card)
+    card.printcards()
+
 
 
