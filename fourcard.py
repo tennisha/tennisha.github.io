@@ -78,6 +78,8 @@ class Player ():
         self.cards = []
         self.chips = 100
         self.bet = 0
+    def printBet (self):
+        return str(self.chips)    
 
     def clearHand (self):
         self.cards = []
@@ -93,6 +95,8 @@ for i in range (5):
     card = deck.dealcard()
     p1.build(card)
     card.printcards()
+
+print ("Player 1 has "+p1.printBet()+" dollars to bet")    
 print("")
 print('Start of Player 2s Hand')
 print("")
@@ -101,6 +105,9 @@ for i in range (5):
     card = deck.dealcard()
     p2.build(card)
     card.printcards()
+print ("Player 2 has "+p2.printBet()+" dollars to bet")  
+class whoWins ():
+    pass
 
 
 
