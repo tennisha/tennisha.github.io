@@ -78,6 +78,7 @@ class Player ():
         self.cards = []
         self.chips = 100
         self.bet = 0
+        
     def printBet (self):
         return str(self.chips)    
 
@@ -86,21 +87,35 @@ class Player ():
 
     def build(self,card):
           self.cards.append (card)
+    def placeBet (self,bet):
+        if (self.chips-bet<0):
+            print ("You do not have sufficient funds to place this bet")
+        else:
+            return (self.bet -bet)      
 print("")
+p1 = Player()
 print('Start of Player 1s Hand')
 print("")
+print ("Player 1 has "+p1.printBet()+" dollars to bet")   
+print ("Please enter your bet, the mimimum is $10: ") 
+p1bet = int(input())
 
-p1 = Player()
+p1Chips = p1.placeBet(p1bet)
 for i in range (5):
     card = deck.dealcard()
     p1.build(card)
     card.printcards()
 
-print ("Player 1 has "+p1.printBet()+" dollars to bet")    
-print("")
-print('Start of Player 2s Hand')
+
 print("")
 p2 = Player()
+print('Start of Player 2s Hand')
+print("")
+print ("Player 2 has "+p2.printBet()+" dollars to bet")  
+print ("Please enter your bet, the mimimum is $10: ") 
+p2bet = int(input())
+
+
 for i in range (5):
     card = deck.dealcard()
     p2.build(card)
