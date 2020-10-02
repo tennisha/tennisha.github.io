@@ -92,7 +92,7 @@ class Player ():
           self.cards.append (card)
  # placeBet determines if the player has enough chips in order to place their desired bet
  # If they do not have enough chips the player is prompted to enter a smaller number
- # eventually need to update this so that the player cannot make a bet that is smaller than the minimum         
+ # eventually need to update this so that the player cannot make a bet that is smaller than the minimum          
     def placeBet (self,bet):
         if (self.chips-bet<0):
             print ("You do not have sufficient funds to place this bet")
@@ -159,7 +159,5 @@ for i in range (5):
 print ("Player 2 has "+ p2.updateChips(p2bet)+" left after this bet.")
 
 
-class whoWins ():
-    pass
 
 
