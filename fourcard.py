@@ -78,20 +78,52 @@ class Player ():
         self.cards = []
         self.chips = 100
         self.bet = 0
-        
+# updateChips is a function which takes the players bet and returns how much money they have after the bet        
+    def updateChips (self,bet):        
+        return str(self.chips-bet) 
+# printBet returns the amount of chips the player has left           
     def printBet (self):
         return str(self.chips)    
-
+# clearHand returns an empty hand so the player has no more cards
     def clearHand (self):
         self.cards = []
-
+# build takes the drawn card and adds it to the players hand
     def build(self,card):
           self.cards.append (card)
+ # placeBet determines if the player has enough chips in order to place their desired bet
+ # If they do not have enough chips the player is prompted to enter a smaller number
+ # eventually need to update this so that the player cannot make a bet that is smaller than the minimum         
     def placeBet (self,bet):
         if (self.chips-bet<0):
             print ("You do not have sufficient funds to place this bet")
         else:
             return (self.bet -bet)      
+
+
+def check_hand(self):
+    if check_four_of_a_kind(self):
+        return 9
+    if check_straight_flush(self):
+        return 8
+    if check_three_of_a_kind(self):
+        return 7
+    if check_flush(self):
+        return 6
+    if check_straight(self):
+        return 5
+    if check_two_pair(self):
+        return 4
+    if check_aces(self):
+        return 3
+    if check_pair(self):
+        return 2
+    if check_high_card(self):
+        return 1
+
+
+
+
+minimumBet = 10
 print("")
 p1 = Player()
 print('Start of Player 1s Hand')
@@ -99,13 +131,17 @@ print("")
 print ("Player 1 has "+p1.printBet()+" dollars to bet")   
 print ("Please enter your bet, the mimimum is $10: ") 
 p1bet = int(input())
-
-p1Chips = p1.placeBet(p1bet)
+if (p1bet <minimumBet):
+    print ("The minimum Bet at this table is "+ str(minimumBet)+ ", your bet has been updated to the minimum")
+    p1bet = minimumBet
+    p1Chips = p1.placeBet(p1bet)
+else:
+    p1Chips = p1.placeBet(p1bet)
 for i in range (5):
     card = deck.dealcard()
     p1.build(card)
     card.printcards()
-
+print ("Player 1 has "+ p1.updateChips(p1bet)+" left after this bet")
 
 print("")
 p2 = Player()
@@ -120,9 +156,10 @@ for i in range (5):
     card = deck.dealcard()
     p2.build(card)
     card.printcards()
-print ("Player 2 has "+p2.printBet()+" dollars to bet")  
+print ("Player 2 has "+ p2.updateChips(p2bet)+" left after this bet.")
+
+
 class whoWins ():
     pass
-
 
 
