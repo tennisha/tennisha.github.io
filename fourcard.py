@@ -17,6 +17,9 @@ class Card:
     def printcards(self):
         print( "{} of {}".format(self.rank,self.suit)    )
 
+
+           
+
 # Test the printing of a Card
 #card = Card("Clubs","Ace")
 #card.printcards()
@@ -24,7 +27,9 @@ class Deck:
 # This is the deck class, the purpose of this class is to initialize the deck and to preint its value.
     def __init__(self):
         self.cards = []
+        self.sortedCards = []
         self.build()
+        card_order = ['2','3', '4', '5', '6', '7','8', '9', '10', 'Jack', 'Queen', 'King','Ace']
     def __repr__ (self):
         return self.__str__
     def build (self):
@@ -42,7 +47,14 @@ class Deck:
         for i in range (len (self.cards) -1, 0, -1):
             r =rando = random.randint(0,i)
             self.cards[i], self.cards[r] = self.cards[r], self.cards[i]
-# Ther purpose of this is to deal a certain number of cards, 5 for the players and 6 for the dealers 
+    
+   # def orderCards(self):
+    #    tempHand = self.cards
+    #    sortedCards = self.cards.sort (key=lamda (card_order.index(c[0],c[1])))
+    #    print(list(sortedCards))
+
+
+# The purpose of this is to deal a certain number of cards, 5 for the players and 6 for the dealers 
 
     def dealcard (self):
         return self.cards.pop()
@@ -55,6 +67,7 @@ deck = Deck()
 deck.shuffle()
 deck.shuffle()
 deck.showcards()
+#deck.orderCards()
 
 class Dealer:
     def __init__(self):
